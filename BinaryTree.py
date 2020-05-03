@@ -41,6 +41,7 @@ class Binary_tree:
         return traversal
     
 
+
 bt=Binary_tree(5)
 bt.root.left=node(3)
 bt.root.right=node(4)
@@ -48,6 +49,21 @@ bt.root.left.left=node(1)
 bt.root.left.right=node(2)
 bt.root.right.left=node(6)
 bt.root.right.right=node(7)
+
+#                5
+#           /         \
+#          3           4
+#       /     \     /     \
+#      1       2   6       7
+
+
+#Preorder:5-3-1-2-4-6-7
+
+#Inoreder:1-3-2-5-6-4-7
+
+#Postorder:1-2-3-6-7-4-5
+
 print(bt.print_("Preorder"))
 print(bt.print_("Inorder"))
 print(bt.print_("Postorder"))
+
