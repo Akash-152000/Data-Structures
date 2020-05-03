@@ -13,6 +13,9 @@ class Binary_tree:
             return self.preorder(bt.root,"")
         elif traverse=="Inorder":
             return self.inorder(bt.root,"")
+        elif traverse=="Levelorder":
+            qu=[bt.root]
+            return self.levelorder(qu,"")
         else:
             return(self.postorder(bt.root,""))
 
@@ -40,6 +43,17 @@ class Binary_tree:
             traversal+=str(start.data)+"-"
         return traversal
     
+     def levelorder(self,qu,traversal):
+        while len(qu)!=0:
+            m=qu.pop()
+            traversal+=str(m.data)+"-"
+            if m.left!=None:
+                qu.insert(0,m.left)
+            if m.right!=None:
+                qu.insert(0,m.right)
+        return traversal
+            
+    
 
 
 bt=Binary_tree(5)
@@ -57,13 +71,15 @@ bt.root.right.right=node(7)
 #      1       2   6       7
 
 
-#Preorder:5-3-1-2-4-6-7
+#Preorder:5-3-1-2-4-6-7-
 
-#Inoreder:1-3-2-5-6-4-7
+#Inoreder:1-3-2-5-6-4-7-
 
-#Postorder:1-2-3-6-7-4-5
+#Postorder:1-2-3-6-7-4-5-
+
+#Levelorder:5-3-4-1-2-6-7-
 
 print(bt.print_("Preorder"))
 print(bt.print_("Inorder"))
 print(bt.print_("Postorder"))
-
+print(bt.print_("Levelorder"))
