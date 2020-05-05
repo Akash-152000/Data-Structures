@@ -24,7 +24,10 @@ class Binary_tree:
             return self.sum_edges(bt.root,sum)
         elif traverse=="Height":
             return self.height(bt.root)
-        else:
+        elif traverse=="Size":
+            count=0
+            return self.size(bt.root,count)
+        elif traverse=="Postorder":
             return (self.postorder(bt.root,""))
 
     def preorder(self,start,traversal):
@@ -85,8 +88,13 @@ class Binary_tree:
         left=self.height(start.left)
         right=self.height(start.right)
         return 1+max(left,right)
-
     
+    def size(self,start,count):
+        if start:
+            count=self.size(start.left,count)
+            count+=1
+            count=self.size(start.right,count)
+        return count
 
 
 bt=Binary_tree(5)
@@ -122,6 +130,8 @@ bt.root.right.right.right=node(9)
 
 #Height:3
 
+#Size:9
+
 print(bt.print_("Preorder"))
 print(bt.print_("Inorder"))
 print(bt.print_("Postorder"))
@@ -129,3 +139,4 @@ print(bt.print_("Levelorder"))
 print(bt.print_("ReverseLevelOrder"))
 print(bt.print_("SumOfEdges"))
 print(bt.print_("Height"))
+print(bt.print_("Size"))
