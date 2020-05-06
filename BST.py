@@ -45,7 +45,25 @@ class BST:
             return self._found(data,curr_node.right)
         if data==curr_node.data:
             return True
-
+        
+    def check(self,start):
+        ans=True
+        if start==None:
+            return False
+        if start.left:
+            if start.left.data<start.data:
+                ans=True
+                self.check(start.left)
+            else:
+                return False
+        if start.right:
+            if start.right.data>start.data:
+                ans=True
+                self.check(start.right)
+            else:
+                return False
+        return ans      
+        
 bt=BST()
 bt.insert(5)
 bt.insert(6)
@@ -53,4 +71,4 @@ bt.insert(4)
 bt.insert(1)
 
 bt.find(5)
-                
+print(bt.check(bt.root))               
