@@ -15,7 +15,18 @@ class Graph(object):
                     edges.append((vertex,connections))
         return edges
     
+    def add_vertex(self,vertex):
+        if vertex not in self.__graph_dict:
+            self.__graph_dict[vertex]=[]
 
+    def add_edges(self,edge):
+        edge=set(edge)
+        (vertex1,vertex2)=tuple(edge)
+        if vertex1 in self.__graph_dict:
+            self.__graph_dict[vertex1].append(vertex2)
+        else:
+            self.__graph_dict[vertex1]=[vertex2]
+         
 
 
 graph = { "a" : ["c"],
@@ -29,3 +40,10 @@ graph = { "a" : ["c"],
 g=Graph(graph)
 print(g.vertices())
 print(g.generate_edges())
+g.add_vertex("g")
+g.add_vertex("h")
+print(g.vertices())
+g.add_edges(("g","h"))
+print(g.generate_edges())
+
+
