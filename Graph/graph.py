@@ -26,7 +26,27 @@ class Graph(object):
             self.__graph_dict[vertex1].append(vertex2)
         else:
             self.__graph_dict[vertex1]=[vertex2]
-         
+
+
+    def find_path(self,start,end,path=None):
+        if path==None:
+            path=[]
+        graph=self.__graph_dict
+        path=path+[start]
+        if start==end:
+            return path
+        if start not in graph:
+            return None
+        for vertex in graph[start]:
+            if vertex not in path:
+                extended_path=self.find_path(vertex,end,path)
+                if extended_path:
+                    return extended_path
+        return None
+                    
+        
+
+        
 
 
 graph = { "a" : ["c"],
@@ -45,5 +65,5 @@ g.add_vertex("h")
 print(g.vertices())
 g.add_edges(("g","h"))
 print(g.generate_edges())
-
+print(g.find_path("a","a"))
 
