@@ -65,8 +65,16 @@ class Graph(object):
         degree=len(adj_vertices)+ adj_vertices.count(vertex)
         return degree
         
-        
+    def find_isolated(self):
+        isolated=[]
+        graph=self.__graph_dict
+        for vertex in graph:
+            #print(isolated,vertex)
+            if not graph[vertex]:
+                isolated+=[vertex]
+        return isolated
 
+            
 
 graph = { "a" : ["d", "f"],
       "b" : ["c"],
@@ -86,3 +94,5 @@ print(g.generate_edges())
 print(g.find_path("a","a"))
 print(g.find_all_path("a","b"))
 print(g.degree("c"))
+print(graph)
+print(g.find_isolated())
