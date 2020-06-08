@@ -60,6 +60,11 @@ class Graph(object):
                     paths.append(p)
         return paths
 
+    def degree(self,vertex):
+        adj_vertices=self.__graph_dict[vertex]
+        degree=len(adj_vertices)+ adj_vertices.count(vertex)
+        return degree
+        
         
 
 
@@ -80,3 +85,4 @@ g.add_edges(("g","h"))
 print(g.generate_edges())
 print(g.find_path("a","a"))
 print(g.find_all_path("a","b"))
+print(g.degree("c"))
