@@ -49,13 +49,13 @@ class Graph(object):
         
 
 
-graph = { "a" : ["c"],
-          "b" : ["c", "e"],
-          "c" : ["a", "b", "d", "e"],
-          "d" : ["c"],
-          "e" : ["c", "b"],
-          "f" : []
-        }
+graph = { "a" : ["d"],
+      "b" : ["c"],
+      "c" : ["b", "c", "d", "e"],
+      "d" : ["a", "c"],
+      "e" : ["c"],
+      "f" : []
+    }
 
 g=Graph(graph)
 print(g.vertices())
