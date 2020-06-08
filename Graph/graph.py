@@ -49,12 +49,12 @@ class Graph(object):
         
 
 
-graph = { "a" : ["d"],
+graph = { "a" : ["d", "f"],
       "b" : ["c"],
       "c" : ["b", "c", "d", "e"],
       "d" : ["a", "c"],
       "e" : ["c"],
-      "f" : []
+      "f" : ["d"]
     }
 
 g=Graph(graph)
