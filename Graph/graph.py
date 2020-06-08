@@ -44,7 +44,21 @@ class Graph(object):
                     return extended_path
         return None
                     
-        
+    def find_all_path(self,start,end,path=[]):
+        graph=self.__graph_dict
+        path=path+[start]
+        if start==end:
+            return [path]
+        if start not in graph:
+            return []
+        paths=[]
+        for vertex in graph[start]:
+            if vertex not in path:
+                extended_path=self.find_all_path(vertex,end,path)
+
+                for p in extended_path:
+                    paths.append(p)
+        return paths
 
         
 
@@ -56,7 +70,6 @@ graph = { "a" : ["d", "f"],
       "e" : ["c"],
       "f" : ["d"]
     }
-
 g=Graph(graph)
 print(g.vertices())
 print(g.generate_edges())
@@ -66,4 +79,4 @@ print(g.vertices())
 g.add_edges(("g","h"))
 print(g.generate_edges())
 print(g.find_path("a","a"))
-
+print(g.find_all_path("a","b"))
