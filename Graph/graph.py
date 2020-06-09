@@ -74,7 +74,14 @@ class Graph(object):
                 isolated+=[vertex]
         return isolated
 
-            
+    def seq_degree(self):
+        seq=[]
+        graph=self.__graph_dict
+        for vertex in graph:
+            seq.append(self.degree(vertex))
+        seq.sort(reverse=True)
+        return tuple(seq)
+                
 
 graph = { "a" : ["d", "f"],
       "b" : ["c"],
@@ -96,3 +103,4 @@ print(g.find_all_path("a","b"))
 print(g.degree("c"))
 print(graph)
 print(g.find_isolated())
+print(g.seq_degree())
